@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ROUTINE - Round trip trajectories to Mars with high or
+	variable Isp non-chemical engines, and applications</title>
+
+<link rel="stylesheet" href="main.css">
+<!--  -->
+<link rel="stylesheet" href="bootstrap-spacelab.min.css">
+<!-- Font awesome -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+<!-- Mathjax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+</script>
+<script type="text/javascript"
+	src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+	
+</script>
+
+</head>
+<body>
+	<!-- Fixed navbar -->
+	<nav class="navbar navbar-default navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed"
+					data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+					aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="index.html">ROUTINE</a>
+			</div>
+			<div id="navbar" class="collapse navbar-collapse">
+				<ul class="nav navbar-nav">
+					<li><a href="index.html">Abstract</a></li>
+					<li class="dropdown active"><a href="#"
+						class="dropdown-toggle" data-toggle="dropdown" role="button"
+						aria-haspopup="true" aria-expanded="false">Introduction <span
+							class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="intro.html#background">Background</a></li>
+							<li><a href="intro.html#foundation">Foundations</a></li>
+							<li><a href="intro.html#concepts">Fundamental concepts</a></li>
+							<li role="separator" class="divider"></li>
+							<li><a href="intro.html">Full page</a></li>
+						</ul></li>
+
+					<li class="dropdown"><a href="#" class="dropdown-toggle"
+						data-toggle="dropdown" role="button" aria-haspopup="true"
+						aria-expanded="false">Aspect of mission <span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="mission.html#importance">Mission importance</a></li>
+							<li><a href="mission.html#astrodyn">Astrodynamics
+									importance</a></li>
+							<li><a href="mission.html#method">Development of
+									solution method</a></li>
+							<li><a href="mission.html#method-analysis">Analysis of
+									method</a></li>
+							<li role="separator" class="divider"></li>
+							<li><a href="mission.html">Full page</a></li>
+						</ul></li>
+
+					<li class="dropdown"><a href="#" class="dropdown-toggle"
+						data-toggle="dropdown" role="button" aria-haspopup="true"
+						aria-expanded="false">Extension <span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="extension.html#importance">Proposal</a></li>
+							<li><a href="extension.html#astrodyn">Analysis</a></li>
+							<li><a href="extension.html#method">Recommendations</a></li>
+							<li role="separator" class="divider"></li>
+							<li><a href="extension.html">Full page</a></li>
+						</ul></li>
+
+					<li><a href="conclusion.html">Summary and conclusions</a></li>
+				</ul>
+
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="references.html">References</a></li>
+				</ul>
+			</div>
+			<!--/.nav-collapse -->
+		</div>
+	</nav>
+
+	<!-- Begin page content -->
+	<div class="container">
+		<div class="page-header">
+			<h1>Introduction</h1>
+		</div>
+		<div class="row">
+			<div class="col-md-9 main">
+				<h2 id="background">Background</h2>
+				<p>
+					To enable crewed missions to Mars, we must thoroughly study the
+					planet and identify test different solutions for a variety of
+					aspects of the mission (e.g. precise Mars entry, descent and
+					landing systems). Robotic study missions need to be designed and
+					sent on schedule to Mars. Some testing can be done on Earth, but a
+					lot needs to be flight tested in environments which are close as
+					possible to a Martian one. Earth and Mars have an approximate 2.135
+					Earth years synodic period. If we are to use Hohmann transfers for
+					all and any mission to Mars, and supposing we only launch one
+					mission per least $\Delta v$ Hohmann trajectory opportunity, that
+					means we must wait about 10.7 years to deploy just five missions. <b>There
+						must be a better way.</b>
+				</p>
+				<p>
+					The goal is to investigate high or variable $I_\text{sp}$
+					non-chemical engines. I chose to focus this analysis on the
+					variable $I_\text{sp}$ VASIMR engine developed by <i>Ad Astra</i>
+					given the extensive amount of information and research available on
+					this engine.
+				</p>
+				<figure class="figure">
+					<img src="refs/vasimr.jpg" class="figure-img img-fluid img-rounded"
+						alt="VASIMR engine">
+					<figcaption class="figure-caption text-xs-right">
+						The VASIMR engine <a href="references.html"><span
+							class="badge">VS-1</span></a>
+					</figcaption>
+				</figure>
+				<h2 id="foundation">Foundations</h2>
+				<p>
+					The company has reported being able to reach Mars in 39 days <a
+						href="http://futurism.com/vasimr-impulse-engine/" target="_blank"><i
+						class="fa fa-external-link"></i></a>&nbsp; using an onboard nuclear
+					electrical power generator and a 200MW VASIMR engine. The proposal
+					detailed in the Aspect of Mission section of this project consists in
+					launching a reusable <i>locomotive</i>-like spacecraft which
+					facilitates routine cargo transportation between the Earth and
+					Mars. This spacecraft would be equipped with a propulsion system
+					allowing relatively fast transfers between Earth and Mars. In order
+					to assess the feasibility of this <i>today</i>, I chose to use
+					strictly technologies which currently are either flight ready,
+					commercially available or in development.
+				</p>
+				<p>Navigate through the project via the navigation bar on the
+					top of the page.</p>
+				<h2 id="concepts">Fundamental concepts</h2>
+				<h3>Simplifications</h3>
+				<p>In order to simplify the analysis, we make the following
+					simplifications.</p>
+				<ol>
+					<li>Earth and Mars are assumed in circular coplanar orbits
+						about the Sun.</li>
+					<li>Earth is assumed at a distance of $149~640~000~\text{km}$
+						from the Sun, using $V_{\oplus}=29.78~km\cdot s^{-1}$ mean orbital
+						velocity <a href="references.html"><span class="badge">AD-1</span></a>.
+					</li>
+					<li>Mars is assumed at a distance of $229~070~000~\text{km}$
+						from the Sun, using $V_M=24.07~km\cdot s^{-1}$ mean orbital
+						velocity <a href="references.html"><span class="badge">AD-1</span></a>.
+					</li>
+					<li>Earth and Mars have a synodic period of $2.135$ Earth
+						years (herein just <i>years</i>). We will assume it to be exactly
+						$2$ years.
+					</li>
+				</ol>
+				<figure class="figure">
+					<img src="refs/xy-e-m.png" class="figure-img img-fluid img-rounded"
+						alt="Earth-Mars circular orbit">
+					<figcaption class="figure-caption text-xs-right">
+						Earth-Mars circular orbit</figcaption>
+				</figure>
+				<h3>Hohmann transfer</h3>
+				<p>An Hohmann transfer is a two-impulse minimum changing
+					velocity transfer. The transfer duration is always half of the
+					period of the transfer orbit because it must depart at apogee or
+					perigee for it to be a minimum transfer.</p>
+				<p>To build an Hohmann transfer, let's start by finding the
+					semi-major axis of the transfer orbit. In the following $v_{d}$ is
+					the velocity on the transfer orbit at the departure point, and
+					$v_{a}$ is the velocity at the arrival point.
+					$$a_{\text{trans}}=\frac{r_{i}+r_{f}}{2}$$
+					$$v_{d}=\sqrt{\frac{2\mu_{\oplus}}{r_{i}}-\frac{\mu_{\oplus}}{a_{\text{trans}}}}$$
+					$$v_{a}=\sqrt{\frac{2\mu_{\oplus}}{r_{f}}-\frac{\mu_{\oplus}}{a_{\text{trans}}}}$$</p>
+				<p>The $\Delta v$ is simply the sum of the absolute difference
+					between velocity on the initial orbit, the velocity at departure on
+					the transfer orbit, and the absolute difference between the
+					velocity at arrival on the transfer orbit and the velocity to on
+					the final orbit. For interplanetary transfers, the heliocentric
+					transfer orbit is elliptical, but the departing and arriving orbits
+					at each of the planets (within their respective sphere of
+					influences) is hyperbolic.</p>
+				<h3>Finite burns</h3>
+				<p>
+					When using chemical engines, it is a valid first order
+					approximation to consider the burns of infinitesimal duration. In
+					the case of low thrust continuous burns, as performed by ion and
+					plasma engines (including VASIMR), it is invalid to consider the
+					$\Delta v$ to be applied immediately. Therefore, any change in
+					velocity requires a numerical propagator. As detailed in the <i>Aspect
+						of mission</i> section, the propagation method I used is Matlab's
+					builtin ODE45.
+				</p>
+				<h3>VASIMR modes of operation</h3>
+				<p>
+					VASIMR is a variable thrust and variable $I_\text{sp}$ engine.
+					According to <a href="references.html"><span class="badge">VS-3</span></a>,
+					the thrust $T$ (in Newton) and mass flow rate $\dot{m}$ (in
+					$kg\cdot s^{-1}$) over time agree with the following, where $P$ is
+					the input power, $\eta$ is the efficiency, and $g_0$ is the
+					standard acceleration due to gravity.
+					$$T=\frac{2P\eta}{I_\text{sp}g_0}$$
+					$$\dot{m}=-\frac{2P\eta}{(I_\text{sp}g_0)^2}$$
+				</p>
+				<p>
+					As per <a href="references.html"><span class="badge">VS-4</span></a>,
+					VASIMR has achieved $T=6~N$, $I_\text{sp}=5000~s$ and $\eta \geq
+					0.7$. A quick computation shows this is equalivent to an input
+					power of $P=105.11~kW$. As discussed in the <i>Aspect of
+						mission</i> section, we will run our simulations with a lower thrust
+					to meet realistic input powers with COTS components.
+				</p>
+			</div>
+			<div class="col-md-3">
+				<ul class="nav nav-pills nav-stacked sidebar">
+					<li role="presentation"><a href="#background">Background</a></li>
+					<li role="presentation"><a href="#foundation">Foundations</a></li>
+					<li role="presentation"><a href="#concepts">Fundamental
+							concepts</a></li>
+					<li><a href="#" class="top-link"><i
+							class="fa fa-arrow-circle-up"></i> Top of page</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<footer class="footer">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6 text-left">
+					<p class="text-muted">
+						<img alt="CU logo" src="cu-logo.png" height="25" /> University of
+						Colorado Boulder - ASEN 5050 Research Project
+					</p>
+				</div>
+				<div class="col-md-6 text-right">
+					<p class="text-muted">
+						Christopher Rabotin. <a
+							href="http://linkedin.com/in/christopherrabotin" target="_blank"><i
+							class="fa fa-linkedin"></i></a> <a
+							href="http://github.com/ChristopherRabotin" target="_blank"><i
+							class="fa fa-github"></i></a>
+					</p>
+				</div>
+			</div>
+		</div>
+	</footer>
+	<!-- Bootstramp JS -->
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
+		integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
+		crossorigin="anonymous"></script>
+</body>
+</html>

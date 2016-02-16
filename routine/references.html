@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ROUTINE - Round Trip Mars trajectories with variable Isp
+	Non-chemical Engines</title>
+
+<link rel="stylesheet" href="main.css">
+<!--  -->
+<link rel="stylesheet" href="bootstrap-spacelab.min.css">
+
+<!-- Font awesome -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+<!-- Mathjax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+</script>
+<script type="text/javascript"
+	src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+	
+</script>
+
+</head>
+<body>
+	<!-- Fixed navbar -->
+	<nav class="navbar navbar-default navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed"
+					data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+					aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="index.html">ROUTINE</a>
+			</div>
+			<div id="navbar" class="collapse navbar-collapse">
+				<ul class="nav navbar-nav">
+					<li><a href="index.html">Abstract</a></li>
+					<li class="dropdown"><a href="#" class="dropdown-toggle"
+						data-toggle="dropdown" role="button" aria-haspopup="true"
+						aria-expanded="false">Introduction <span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="intro.html#background">Background</a></li>
+							<li><a href="intro.html#foundation">Foundations</a></li>
+							<li><a href="intro.html#concepts">Fundamental concepts</a></li>
+							<li role="separator" class="divider"></li>
+							<li><a href="intro.html">Full page</a></li>
+						</ul></li>
+
+					<li class="dropdown"><a href="#" class="dropdown-toggle"
+						data-toggle="dropdown" role="button" aria-haspopup="true"
+						aria-expanded="false">Aspect of mission <span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="mission.html#importance">Mission importance</a></li>
+							<li><a href="mission.html#astrodyn">Astrodynamics
+									importance</a></li>
+							<li><a href="mission.html#method">Development of
+									solution method</a></li>
+							<li><a href="mission.html#method-analysis">Analysis of
+									method</a></li>
+							<li role="separator" class="divider"></li>
+							<li><a href="mission.html">Full page</a></li>
+						</ul></li>
+
+					<li class="dropdown"><a href="#" class="dropdown-toggle"
+						data-toggle="dropdown" role="button" aria-haspopup="true"
+						aria-expanded="false">Extension <span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="extension.html#importance">Proposal</a></li>
+							<li><a href="extension.html#astrodyn">Analysis</a></li>
+							<li><a href="extension.html#method">Recommendations</a></li>
+							<li role="separator" class="divider"></li>
+							<li><a href="extension.html">Full page</a></li>
+						</ul></li>
+
+					<li><a href="conclusion.html">Summary and conclusions</a></li>
+				</ul>
+
+				<ul class="nav navbar-nav navbar-right">
+					<li class="active"><a href="references.html">References</a></li>
+				</ul>
+			</div>
+			<!--/.nav-collapse -->
+		</div>
+	</nav>
+
+	<!-- Begin page content -->
+	<div class="container">
+		<div class="page-header">
+			<h1>References and code</h1>
+		</div>
+		<h2>Code</h2>
+		<div class="panel panel-default">
+			<table class="table">
+				<thead>
+					<tr>
+						<th style="width: 15%;">Filename</th>
+						<th>Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td><a href="code/opt_dv_lambert.m" target="_blank">opt_dv_lambert.m</a></td>
+						<td>For a given number of days throughout a synodic period,
+							compute the lowest $\Delta v$ requirements.</td>
+					</tr>
+					<tr>
+						<td><a href="code/lambert.m" target="_blank">lambert.m</a></td>
+						<td>Robust Lambert problem solver by European Space Agency's
+							GTOP, cf. <span class="badge ref">AD-2</span> and <a
+							href="http://uk.mathworks.com/matlabcentral/fileexchange/26348-robust-solver-for-lambert-s-orbital-boundary-value-problem"><i
+								class="fa fa-external-link"></i></a>.
+						</td>
+					</tr>
+					<tr>
+						<td><a href="code/circ_plot.m" target="_blank">circ_plot.m</a></td>
+						<td>A trivial circle plotter.</td>
+					</tr>
+					<tr>
+						<td><a href="code/vasimr.m" target="_blank">vasimr.m</a></td>
+						<td>Performs the whole VASIMR simulation, including the three ODE45 propagations.</td>
+					</tr>
+					<tr>
+						<td><a href="code/vasimr_cruise_event.m" target="_blank">vasimr_cruise_event.m</a></td>
+						<td>Event propagator stopping function for the cruising part of the mission.</td>
+					</tr>
+					<tr>
+						<td><a href="code/vasimr_inte.m" target="_blank">vasimr_inte.m</a></td>
+						<td>The main integration function. It is 10 dimensional because it needs additional paramaters to the position and velocity.</td>
+					</tr>
+					<tr>
+						<td><a href="code/vasimr_out_event.m" target="_blank">vasimr_out_event.m</a></td>
+						<td>Event propagator stopping function for the initial Earth to Mars burn.</td>
+					</tr>
+					<tr>
+						<td><a href="code/vasimr_out_event_approach.m" target="_blank">vasimr_out_event_approach.m</a></td>
+						<td>Event propagator stopping function for the Mars approach burn.</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<h2>References</h2>
+		<h4>Legend</h4>
+		<ul class="list-group small">
+			<li class="list-group-item"><span class="badge ref">XY-0</span>&nbsp;Reference
+				name, where XY is the section abbreviation.</li>
+			<li class="list-group-item"><i class="fa fa-external-link"></i>&nbsp;External
+				link to original source</li>
+			<li class="list-group-item"><i class="fa fa-hdd-o"></i>&nbsp;Link
+				to local back up</li>
+		</ul>
+		<h3>Astrodynamics</h3>
+		<ul class="list-group">
+			<li class="list-group-item"><span class="badge ref">AD-1</span>
+				NASA Mars fact sheet <a
+				href="http://nssdc.gsfc.nasa.gov/planetary/factsheet/marsfact.html"
+				target="_blank"><i class="fa fa-external-link"></i></a>&nbsp;<a
+				href="refs/MarsFactSheet.pdf" target="_blank"><i
+					class="fa fa-hdd-o"></i></a></li>
+			<li class="list-group-item"><span class="badge ref">AD-2</span>
+				Izzo, D., Global Optimization and Space Pruning for Spacecraft
+				Trajectory Design, Spacecraft Trajectory Optimization, Conway, B.
+				(Eds.), Cambridge University Press, pp.178-199, 2010. <a
+				href="http://www.esa.int/gsp/ACT/inf/projects/gtop/gtop.html"
+				target="_blank"><i class="fa fa-external-link"></i></a></li>
+			<li class="list-group-item"><span class="badge ref">AD-3</span>
+				Christopher L. Ranieri; Cesar A. Ocampo (2005) Optimization of
+				Roundtrip, Time-Constrained, Finite Burn Trajectories via an
+				Indirect Method. Journal of Guidance, Control, and Dynamics <a
+				href="http://dx.doi.org/10.2514/1.5540" target="_blank"><i
+					class="fa fa-external-link"></i></a></li>
+
+			<li class="list-group-item"><span class="badge ref">AD-4</span>
+				Christopher L. Ranieri; Cesar A. Ocampo (2009) Indirect Optimization
+				of Three-Dimensional Finite-Burning Interplanetary Transfers
+				Including Spiral Dynamics. Journal of Guidance, Control, and
+				Dynamics <a href="http://dx.doi.org/10.2514/1.38170" target="_blank"><i
+					class="fa fa-external-link"></i></a></li>
+
+		</ul>
+		<h3>VASIMR engine</h3>
+		<ul class="list-group">
+			<li class="list-group-item"><span class="badge ref">VS-1</span>
+				VASIMR Engine, on the Ad Astra website <a
+				href="http://www.adastrarocket.com/aarc/VASIMR" target="_blank"><i
+					class="fa fa-external-link"></i></a>&nbsp;<a
+				href="refs/VASIMR-Our%20engine.pdf" target="_blank"><i
+					class="fa fa-hdd-o"></i></a></li>
+
+			<li class="list-group-item"><span class="badge ref">VS-2</span>
+				Atlas Centaur characteristics <a
+				href="http://www.braeunig.us/space/specs/atlas.htm" target="_blank"><i
+					class="fa fa-external-link"></i></a>&nbsp;<a
+				href="refs/Atlas%20Centaur.pdf" target="_blank"><i
+					class="fa fa-hdd-o"></i></a></li>
+
+			<li class="list-group-item"><span class="badge ref">VS-3</span>
+				X. Liang, Nonplanar Trajectory Optimization with Variable Specific
+				Impulse Engine Using Gauss Pseudospectral Method, Proceedings of the
+				WCECS 2007 <a
+				href="http://www.iaeng.org/publication/WCECS2007/WCECS2007_pp777-783.pdf"
+				target="_blank"><i class="fa fa-external-link"></i></a>&nbsp;<a
+				href="refs/VASIMR%20Gauss%20pseudospectral.pdf" target="_blank"><i
+					class="fa fa-hdd-o"></i></a></li>
+
+			<li class="list-group-item"><span class="badge ref">VS-4</span>
+				Ad Astra August 10 2015 Press Release, Ad Astra Rocket Company and
+				NASA move to execution phase of NextSTEP VASIMR partnership <a
+				href="http://www.adastrarocket.com/AdAstraRelease081015finalrel.pdf"
+				target="_blank"><i class="fa fa-external-link"></i></a>&nbsp;<a
+				href="refs/AdAstraRelease081015finalrel.pdf" target="_blank"><i
+					class="fa fa-hdd-o"></i></a></li>
+
+			<li class="list-group-item"><span class="badge ref">VS-5</span>
+				B. Longmier, VASIMR VX-200 Improved Throttling Range, AIAA 2012 <a
+				href="http://www.umich.edu/~peplweb/pdf/AIAA-2012-3930.pdf"
+				target="_blank"><i class="fa fa-external-link"></i></a>&nbsp;<a
+				href="refs/VX200-AIAA-2012-3930.pdf" target="_blank"><i
+					class="fa fa-hdd-o"></i></a></li>
+
+			<li class="list-group-item"><span class="badge ref">VS-6</span>
+				<i>How heavy is a VASIMR® engine?</i> <a
+				href="http://www.adastrarocket.com/aarc/faq11" target="_blank"><i
+					class="fa fa-external-link"></i></a></li>
+
+		</ul>
+		<h3>Spacecraft design</h3>
+		<ul class="list-group">
+			<li class="list-group-item"><span class="badge ref">SC-1</span>
+				BYD B-Box scalable at 40 kWh (38.4 kWh usable), 10 kW output power <a
+				href="http://www.byd.com/energy/b-box-25.htm" target="_blank"><i
+					class="fa fa-external-link"></i></a>&nbsp;<a
+				href="refs/BYD-B-Box10.jpg" target="_blank"><i
+					class="fa fa-hdd-o"></i></a></li>
+
+			<li class="list-group-item"><span class="badge ref">SC-2</span>
+				Atlas Centaur characteristics <a
+				href="http://www.braeunig.us/space/specs/atlas.htm" target="_blank"><i
+					class="fa fa-external-link"></i></a>&nbsp;<a
+				href="refs/Atlas%20Centaur.pdf" target="_blank"><i
+					class="fa fa-hdd-o"></i></a></li>
+
+			<li class="list-group-item"><span class="badge ref">SC-3</span>
+				MAVEN spacecraft characteristics <a
+				href="http://mars.jpl.nasa.gov/files/resources/MAVENPresentation2013.pdf"
+				target="_blank"><i class="fa fa-external-link"></i></a></li>
+
+		</ul>
+	</div>
+
+	<footer class="footer">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6 text-left">
+					<p class="text-muted">
+						<img alt="CU logo" src="cu-logo.png" height="25" /> University of
+						Colorado Boulder - ASEN 5050 Research Project
+					</p>
+				</div>
+				<div class="col-md-6 text-right">
+					<p class="text-muted">
+						Christopher Rabotin. <a
+							href="http://linkedin.com/in/christopherrabotin" target="_blank"><i
+							class="fa fa-linkedin"></i></a> <a
+							href="http://github.com/ChristopherRabotin" target="_blank"><i
+							class="fa fa-github"></i></a>
+					</p>
+				</div>
+			</div>
+		</div>
+	</footer>
+	<!-- Bootstramp JS -->
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
+		integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
+		crossorigin="anonymous"></script>
+</body>
+</html>

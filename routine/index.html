@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ROUTINE - Round Trip Mars trajectories with variable Isp
+	Non-chemical Engines</title>
+
+<link rel="stylesheet" href="main.css">
+<link rel="stylesheet" href="bootstrap-spacelab.min.css">
+<!-- Font awesome -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+<!-- Mathjax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+</script>
+<script type="text/javascript"
+	src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+	
+</script>
+
+</head>
+<body>
+	<!-- Fixed navbar -->
+	<nav class="navbar navbar-default navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed"
+					data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+					aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="index.html">ROUTINE</a>
+			</div>
+			<div id="navbar" class="collapse navbar-collapse">
+				<ul class="nav navbar-nav">
+					<li class="active"><a href="index.html">Abstract</a></li>
+					<li class="dropdown"><a href="#" class="dropdown-toggle"
+						data-toggle="dropdown" role="button" aria-haspopup="true"
+						aria-expanded="false">Introduction <span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="intro.html#background">Background</a></li>
+							<li><a href="intro.html#foundation">Foundations</a></li>
+							<li><a href="intro.html#concepts">Fundamental concepts</a></li>
+							<li role="separator" class="divider"></li>
+							<li><a href="intro.html">Full page</a></li>
+						</ul></li>
+
+					<li class="dropdown"><a href="#" class="dropdown-toggle"
+						data-toggle="dropdown" role="button" aria-haspopup="true"
+						aria-expanded="false">Aspect of mission <span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="mission.html#importance">Mission importance</a></li>
+							<li><a href="mission.html#astrodyn">Astrodynamics
+									importance</a></li>
+							<li><a href="mission.html#method">Development of
+									solution method</a></li>
+							<li><a href="mission.html#method-analysis">Analysis of
+									method</a></li>
+							<li role="separator" class="divider"></li>
+							<li><a href="mission.html">Full page</a></li>
+						</ul></li>
+
+					<li class="dropdown"><a href="#" class="dropdown-toggle"
+						data-toggle="dropdown" role="button" aria-haspopup="true"
+						aria-expanded="false">Extension <span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="extension.html#importance">Proposal</a></li>
+							<li><a href="extension.html#astrodyn">Analysis</a></li>
+							<li><a href="extension.html#method">Recommendations</a></li>
+							<li role="separator" class="divider"></li>
+							<li><a href="extension.html">Full page</a></li>
+						</ul></li>
+
+					<li><a href="conclusion.html">Summary and conclusions</a></li>
+				</ul>
+
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="references.html">References</a></li>
+				</ul>
+			</div>
+			<!--/.nav-collapse -->
+		</div>
+	</nav>
+
+	<!-- Begin page content -->
+	<div class="container">
+		<div class="page-header">
+			<h1>ROUTINE</h1>
+			<h2>
+				<span class="acr">Rou</span>nd <span class="acr">T</span>rip Mars
+				trajectories with variable <span class="acr">I</span>sp <span
+					class="acr">N</span>on-chemical <span class="acr">E</span>ngines
+			</h2>
+			<h4 class="text-right">Christopher Rabotin</h4>
+		</div>
+		<p class="lead">
+			One of the major hurdles for Mars missions is reaching the planet
+			itself. Current missions use chemical engines, requiring mission
+			designers to trade-off fuel mass and payload mass. Current solutions
+			opt for an Hohmann transfer, which implies long transfer times.<br />Ion
+			and plasma engines provide a high specific impulse, herein
+			$I_\text{sp}$, but usually low thrust, leading to very long transfer
+			durations. The aim of this project is to build a set of
+			finite-burning trajectories using variable- $I_\text{sp}$ engines
+			from a Low Earth parking Orbit to a Mars parking orbit which can
+			outrun Hohmann transfers in transfer time and required fuel mass.<br />
+			The extension is to provide a basic mission design from an Earth
+			orbit to a Mars orbit and back in which the Earth-bound return flight
+			would have substantially less mass than the Mars-bound flight. An
+			application of this mission design would be a reusable cargo delivery
+			spacecraft from Earth to Mars.
+		</p>
+		<p>Navigate through the project via the navigation bar on the top
+			of the page.</p>
+		<p>Throughout the project, subscripts $\oplus$, $M$ and $\odot$ respectively refer to the Earth, Mars and the Sun.</p>
+	</div>
+
+	<footer class="footer">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6 text-left">
+					<p class="text-muted">
+						<img alt="CU logo" src="cu-logo.png" height="25" /> University of
+						Colorado Boulder - ASEN 5050 Research Project - December 2015
+					</p>
+				</div>
+				<div class="col-md-6 text-right">
+					<p class="text-muted">
+						Christopher Rabotin. <a
+							href="http://linkedin.com/in/christopherrabotin" target="_blank"><i
+							class="fa fa-linkedin"></i></a> <a
+							href="http://github.com/ChristopherRabotin" target="_blank"><i
+							class="fa fa-github"></i></a>
+					</p>
+				</div>
+			</div>
+		</div>
+	</footer>
+	<!-- Bootstramp JS -->
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
+		integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
+		crossorigin="anonymous"></script>
+</body>
+</html>

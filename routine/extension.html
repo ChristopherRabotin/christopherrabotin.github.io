@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ROUTINE - Round trip trajectories to Mars with high or
+	variable Isp non-chemical engines, and applications</title>
+
+<link rel="stylesheet" href="main.css">
+<link rel="stylesheet" href="bootstrap-spacelab.min.css">
+<!-- Font awesome -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+<!-- Mathjax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+</script>
+<script type="text/javascript"
+	src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+	
+</script>
+
+</head>
+<body>
+	<!-- Fixed navbar -->
+	<nav class="navbar navbar-default navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed"
+					data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+					aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="index.html">ROUTINE</a>
+			</div>
+			<div id="navbar" class="collapse navbar-collapse">
+				<ul class="nav navbar-nav">
+					<li><a href="index.html">Abstract</a></li>
+					<li class="dropdown"><a href="#" class="dropdown-toggle"
+						data-toggle="dropdown" role="button" aria-haspopup="true"
+						aria-expanded="false">Introduction <span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="intro.html#background">Background</a></li>
+							<li><a href="intro.html#foundation">Foundations</a></li>
+							<li><a href="intro.html#concepts">Fundamental concepts</a></li>
+							<li role="separator" class="divider"></li>
+							<li><a href="intro.html">Full page</a></li>
+						</ul></li>
+
+					<li class="dropdown"><a href="#" class="dropdown-toggle"
+						data-toggle="dropdown" role="button" aria-haspopup="true"
+						aria-expanded="false">Aspect of mission <span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="mission.html#importance">Mission importance</a></li>
+							<li><a href="mission.html#astrodyn">Astrodynamics
+									importance</a></li>
+							<li><a href="mission.html#method">Development of
+									solution method</a></li>
+							<li><a href="mission.html#method-analysis">Analysis of
+									method</a></li>
+							<li role="separator" class="divider"></li>
+							<li><a href="mission.html">Full page</a></li>
+						</ul></li>
+
+					<li class="dropdown active"><a href="#"
+						class="dropdown-toggle" data-toggle="dropdown" role="button"
+						aria-haspopup="true" aria-expanded="false">Extension <span
+							class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="extension.html#importance">Proposal</a></li>
+							<li><a href="extension.html#astrodyn">Analysis</a></li>
+							<li><a href="extension.html#method">Recommendations</a></li>
+							<li role="separator" class="divider"></li>
+							<li><a href="extension.html">Full page</a></li>
+						</ul></li>
+
+					<li><a href="conclusion.html">Summary and conclusions</a></li>
+				</ul>
+
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="references.html">References</a></li>
+				</ul>
+			</div>
+			<!--/.nav-collapse -->
+		</div>
+	</nav>
+
+	<!-- Begin page content -->
+	<div class="container">
+		<div class="page-header">
+			<h1>Extension</h1>
+		</div>
+		<div class="row">
+			<div class="col-md-9 main">
+				<h2 id="proposal">Proposal</h2>
+				<p>
+					Given we have identified at least some Lambert solutions which can
+					be exploitable by variable $I_\text{sp}$ engines, we find solutions
+					for the return trajectory from Mars on a less regular basis than
+					the out bound flight. The reasoning here is to minimize fuel usage.
+					Research in <span class="badge ref">AD-3</span> proposes a method
+					to determine all the flight parameters based on a desired final
+					mass.
+				</p>
+				<h2 id="analysis">Analysis</h2>
+				<div class="panel panel-default">
+					<!-- Default panel contents -->
+					<div class="panel-heading">Lambert's problem solutions</div>
+					<div class="panel-body">
+						<p>Here are the solutions for a return which may take up to
+							one year, and with a launch every four Earth months.</p>
+					</div>
+					<table class="table table-hover">
+						<thead>
+							<tr>
+								<th>No.</th>
+								<th>$\Delta v~(km\cdot s^{-1})$</th>
+								<th>$\vec{R}_1~(10^8~km)$</th>
+								<th>$\vec{R}_2~(10^8km)$</th>
+								<th>$\vec{V}_1~(km\cdot s^{-1})$</th>
+								<th>$\vec{V}_2~(km\cdot s^{-1})$</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>4</td>
+								<td>$5.3546$</td>
+								<td>$\left[\begin{array}{c} 1.3232\\ -0.6990\\ 0
+									\end{array}\right]$</td>
+								<td>$\left[\begin{array}{c} -2.0841\\ 0.9507\\ 0
+									\end{array}\right]$</td>
+								<td>$\left[\begin{array}{c} -9.3051\\ -31.9989\\ 0
+									\end{array}\right]$</td>
+								<td>$\left[\begin{array}{c} 14.6630\\ 16.7470\\ 0
+									\end{array}\right]$</td>
+							</tr>
+							<tr>
+								<td>5</td>
+								<td>$5.4898$</td>
+								<td>$\left[\begin{array}{c} 0.2957\\ 1.4669\\ 0
+									\end{array}\right]$</td>
+								<td>$\left[\begin{array}{c} -2.0709\\ -0.9791\\ 0
+									\end{array}\right]$</td>
+								<td>$\left[\begin{array}{c} -25.1690\\ 21.4303\\ 0
+									\end{array}\right]$</td>
+								<td>$\left[\begin{array}{c} 18.0198\\ -12.3682\\ 0
+									\end{array}\right]$</td>
+							</tr>
+							<tr>
+								<td>3</td>
+								<td>$5.5375$</td>
+								<td>$\left[\begin{array}{c} -1.1331\\ -0.9774\\ 0
+									\end{array}\right]$</td>
+								<td>$\left[\begin{array}{c} -0.5287\\ 2.2289\\ 0
+									\end{array}\right]$</td>
+								<td>$\left[\begin{array}{c} -31.6050\\ 9.3672\\ 0
+									\end{array}\right]$</td>
+								<td>$\left[\begin{array}{c} 20.3922\\ -7.4657\\ 0
+									\end{array}\right]$</td>
+							</tr>
+							<tr>
+								<td>6</td>
+								<td>$5.8494$</td>
+								<td>$\left[\begin{array}{c} -1.4780\\ -0.2339\\ 0
+									\end{array}\right]$</td>
+								<td>$\left[\begin{array}{c} -0.5162\\ -2.2318\\ 0
+									\end{array}\right]$</td>
+								<td>$\left[\begin{array}{c} -23.2361\\ -22.5542\\ 0
+									\end{array}\right]$</td>
+								<td>$\left[\begin{array}{c} 15.6720\\ 13.7095\\ 0
+									\end{array}\right]$</td>
+							</tr>
+							<tr>
+								<td>2</td>
+								<td>$5.9072$</td>
+								<td>$\left[\begin{array}{c} -0.5214\\ 1.4026\\ 0
+									\end{array}\right]$</td>
+								<td>$\left[\begin{array}{c} 1.4206\\ 1.7970\\ 0
+									\end{array}\right]$</td>
+								<td>$\left[\begin{array}{c} 5.7235\\ 31.7673\\ 0
+									\end{array}\right]$</td>
+								<td>$\left[\begin{array}{c} -2.5266\\ -20.5068\\ 0
+									\end{array}\right]$</td>
+							</tr>
+							<tr>
+								<td>7</td>
+								<td>$6.1026$</td>
+								<td>$\left[\begin{array}{c} 0.7117\\ -1.3163\\ 0
+									\end{array}\right]$</td>
+								<td>$\left[\begin{array}{c} 1.4162\\ -1.8005\\ 0
+									\end{array}\right]$</td>
+								<td>$\left[\begin{array}{c} 17.6840\\ -26.5962\\ 0
+									\end{array}\right]$</td>
+								<td>$\left[\begin{array}{c} -10.8942\\ 16.9218\\ 0
+									\end{array}\right]$</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<h2 id="recommend">Recommendations</h2>
+				<p>
+					Given the convergence issues encountered in the initial Earth to
+					Mars analysis, the velocity building assumptions should be
+					revisited. In addition, <span class="badge ref">AD-4</span> should
+					be used for its optimization of interplanetary transfers which
+					include spiral dynamics. These spiral dynamics are necessary to
+					leave and reach parking orbits about planets.
+				</p>
+			</div>
+		</div>
+	</div>
+
+	<footer class="footer">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6 text-left">
+					<p class="text-muted">
+						<img alt="CU logo" src="cu-logo.png" height="25" /> University of
+						Colorado Boulder - ASEN 5050 Research Project
+					</p>
+				</div>
+				<div class="col-md-6 text-right">
+					<p class="text-muted">
+						Christopher Rabotin. <a
+							href="http://linkedin.com/in/christopherrabotin" target="_blank"><i
+							class="fa fa-linkedin"></i></a> <a
+							href="http://github.com/ChristopherRabotin" target="_blank"><i
+							class="fa fa-github"></i></a>
+					</p>
+				</div>
+			</div>
+		</div>
+	</footer>
+	<!-- Bootstramp JS -->
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
+		integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
+		crossorigin="anonymous"></script>
+</body>
+</html>

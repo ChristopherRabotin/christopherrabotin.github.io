@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ROUTINE - Round trip trajectories to Mars with high or
+	variable Isp non-chemical engines, and applications</title>
+
+<link rel="stylesheet" href="main.css">
+<link rel="stylesheet" href="bootstrap-spacelab.min.css">
+<!-- Font awesome -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+<!-- Mathjax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+</script>
+<script type="text/javascript"
+	src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+	
+</script>
+
+</head>
+<body>
+	<!-- Fixed navbar -->
+	<nav class="navbar navbar-default navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed"
+					data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+					aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="index.html">ROUTINE</a>
+			</div>
+			<div id="navbar" class="collapse navbar-collapse">
+				<ul class="nav navbar-nav">
+					<li><a href="index.html">Abstract</a></li>
+					<li class="dropdown"><a href="#" class="dropdown-toggle"
+						data-toggle="dropdown" role="button" aria-haspopup="true"
+						aria-expanded="false">Introduction <span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="intro.html#background">Background</a></li>
+							<li><a href="intro.html#foundation">Foundations</a></li>
+							<li><a href="intro.html#concepts">Fundamental concepts</a></li>
+							<li role="separator" class="divider"></li>
+							<li><a href="intro.html">Full page</a></li>
+						</ul></li>
+
+					<li class="dropdown"><a href="#" class="dropdown-toggle"
+						data-toggle="dropdown" role="button" aria-haspopup="true"
+						aria-expanded="false">Aspect of mission <span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="mission.html#importance">Mission importance</a></li>
+							<li><a href="mission.html#astrodyn">Astrodynamics
+									importance</a></li>
+							<li><a href="mission.html#method">Development of
+									solution method</a></li>
+							<li><a href="mission.html#method-analysis">Analysis of
+									method</a></li>
+							<li role="separator" class="divider"></li>
+							<li><a href="mission.html">Full page</a></li>
+						</ul></li>
+
+					<li class="dropdown"><a href="#" class="dropdown-toggle"
+						data-toggle="dropdown" role="button" aria-haspopup="true"
+						aria-expanded="false">Extension <span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="extension.html#importance">Proposal</a></li>
+							<li><a href="extension.html#astrodyn">Analysis</a></li>
+							<li><a href="extension.html#method">Recommendations</a></li>
+							<li role="separator" class="divider"></li>
+							<li><a href="extension.html">Full page</a></li>
+						</ul></li>
+
+					<li class="active"><a href="conclusion.html">Summary and
+							conclusions</a></li>
+				</ul>
+
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="references.html">References</a></li>
+				</ul>
+			</div>
+			<!--/.nav-collapse -->
+		</div>
+	</nav>
+
+	<!-- Begin page content -->
+	<div class="container">
+		<div class="page-header">
+			<h1>Summary and conclusions</h1>
+		</div>
+		<p>
+			Initial fuel mass estimates for the heliocentric transfer seem to
+			work enough for the out bound flight. From the Lambert's problem
+			solutions detailed in the <i>Extension</i>, I expect these estimates
+			to also allow for a return flight. However, as noted previously, the
+			major limitation in this study was to not analyze the transfer from a
+			parking orbit to a hyperbolic orbit. This surely is the most fuel
+			consuming part of the mission. A subsequent study should take into
+			consideration the following information to generate such a maneuver.
+		</p>
+		<ul>
+			<li>Sizing of the battery pack and power generation system.</li>
+			<li>Charging time of the batteries, which will limit the
+				duration of a continuous thrust. In our case, as detailed
+				previously, we have enough energy capacity to perform a six hour
+				continuous thrust. In the case of an escape trajectory, it will
+				surely be necessary to increase orbital velocity through such a
+				thrust, then wait at a given orbit until the battery pack is full
+				again, or do another finite burn.</li>
+			<li>Injection into planetary orbit must be done in a tangential
+				fashion: this surely greatly impacts the launch window
+				opportunities, and adds additional maneuvers and therefore potential
+				issues with regards to energy and fuel available.</li>
+		</ul>
+		<p>Overall, I very much look forward to doing continuing this
+			study.</p>
+	</div>
+
+	<footer class="footer">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6 text-left">
+					<p class="text-muted">
+						<img alt="CU logo" src="cu-logo.png" height="25" /> University of
+						Colorado Boulder - ASEN 5050 Research Project
+					</p>
+				</div>
+				<div class="col-md-6 text-right">
+					<p class="text-muted">
+						Christopher Rabotin. <a
+							href="http://linkedin.com/in/christopherrabotin" target="_blank"><i
+							class="fa fa-linkedin"></i></a> <a
+							href="http://github.com/ChristopherRabotin" target="_blank"><i
+							class="fa fa-github"></i></a>
+					</p>
+				</div>
+			</div>
+		</div>
+	</footer>
+	<!-- Bootstramp JS -->
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
+		integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
+		crossorigin="anonymous"></script>
+</body>
+</html>

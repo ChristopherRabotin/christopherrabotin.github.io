@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ROUTINE - Round trip trajectories to Mars with high or
+	variable Isp non-chemical engines, and applications</title>
+
+<link rel="stylesheet" href="main.css">
+<!--  -->
+<link rel="stylesheet" href="bootstrap-spacelab.min.css">
+<!-- Font awesome -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+<!-- Mathjax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+</script>
+<script type="text/javascript"
+	src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+	
+</script>
+
+</head>
+<body>
+	<!-- Fixed navbar -->
+	<nav class="navbar navbar-default navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed"
+					data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+					aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="index.html">ROUTINE</a>
+			</div>
+			<div id="navbar" class="collapse navbar-collapse">
+				<ul class="nav navbar-nav">
+					<li><a href="index.html">Abstract</a></li>
+					<li class="dropdown"><a href="#" class="dropdown-toggle"
+						data-toggle="dropdown" role="button" aria-haspopup="true"
+						aria-expanded="false">Introduction <span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="intro.html#background">Background</a></li>
+							<li><a href="intro.html#foundation">Foundations</a></li>
+							<li><a href="intro.html#concepts">Fundamental concepts</a></li>
+							<li role="separator" class="divider"></li>
+							<li><a href="intro.html">Full page</a></li>
+						</ul></li>
+
+					<li class="dropdown active"><a href="#"
+						class="dropdown-toggle" data-toggle="dropdown" role="button"
+						aria-haspopup="true" aria-expanded="false">Aspect of mission <span
+							class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="mission.html#importance">Mission importance</a></li>
+							<li><a href="mission.html#astrodyn">Astrodynamics
+									importance</a></li>
+							<li><a href="mission.html#method">Development of
+									solution method</a></li>
+							<li><a href="mission.html#method-analysis">Analysis of
+									method</a></li>
+							<li role="separator" class="divider"></li>
+							<li><a href="mission.html">Full page</a></li>
+						</ul></li>
+
+					<li class="dropdown"><a href="#" class="dropdown-toggle"
+						data-toggle="dropdown" role="button" aria-haspopup="true"
+						aria-expanded="false">Extension <span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="extension.html#importance">Proposal</a></li>
+							<li><a href="extension.html#astrodyn">Analysis</a></li>
+							<li><a href="extension.html#method">Recommendations</a></li>
+							<li role="separator" class="divider"></li>
+							<li><a href="extension.html">Full page</a></li>
+						</ul></li>
+
+					<li><a href="conclusion.html">Summary and conclusions</a></li>
+				</ul>
+
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="references.html">References</a></li>
+				</ul>
+			</div>
+			<!--/.nav-collapse -->
+		</div>
+	</nav>
+
+	<!-- Begin page content -->
+	<div class="container">
+		<div class="page-header">
+			<h1>Aspect of mission</h1>
+		</div>
+		<div class="row">
+			<div class="col-md-9 main">
+				<h2 id="importance">Mission importance</h2>
+				<p>If we are to explore Mars and other nearby celestial objects,
+					it is very important to identify ways in which we can reach those
+					bodies with our current launch technologies. With regards to Mars
+					specifically, regular transfers to the red planet will allow us to
+					study it in much more detail much sooner, than by using
+					conventional interplanetary transfers.</p>
+				<p>In addition, it is important that the feasibility study is
+					conducted by a third party, independent of any engine manufacturer
+					in order to limit bias towards a given engine. Similarly, such
+					studies can shine light on over-optimistic assumptions by the
+					manufacturer (e.g. several hours of continuous availability of
+					$200~kW$).</p>
+				<h2 id="astrodyn">Astrodynamics importance</h2>
+				<p>This study is very simplified and can therefore only be used
+					at best as a baseline for future more precise studies.</p>
+				<p>However, with regards to astrodynamics, this mission can be
+					seen as important because it would open up the possibility of many
+					more missions around Mars, leading to more fun and work for
+					astrodynamists.</p>
+				<h2 id="method">Development of solution method</h2>
+				<p>This method has many preliminary steps, which are detailed
+					below. The goal is to have a valid mass estimate for the
+					spacecraft, which will be used to propagate the spacecraft's
+					trajectory, and to estimate $\Delta v$s needed for the most optimal
+					launch windows throughout a synodic period.</p>
+				<h3>Engine</h3>
+				<p>
+					We will be using the VX-200SS model in this study, which is
+					currently in development <a href="references.html"><span
+						class="badge">VS-4</span></a>. We will assume that the engine
+					characteristics to be those of <a href="references.html"><span
+						class="badge">VS-5</span></a> unless <a href="references.html"><span
+						class="badge">VS-4</span></a> specifies another value.
+				</p>
+				<h3>Basic spacecraft mass estimates</h3>
+				<p>We require some kind of mass estimates in order to understand
+					the acceleration which can be reached given the thrust.
+					$$\vec{F}=m\vec{a}$$</p>
+				<p>
+					The main limiting factor is the power input to the engines. As the
+					goal of this design is to assess the feasibility of <i>ROUTINE</i>
+					using current technology, we need to make realistic mass estimates
+					for the batteries. In fact, we must rule out any power source which
+					can generate onboard the spacecraft instataneous power in the order
+					of hundreds of kilowatts. Looks through the selection of batteries
+					by BYD, one of the world's largest battery manufacturer, it seems
+					the most suitable COTS battery pack would be the BYD B-Box <a
+						href="references.html"><span class="badge">SC-1</span></a>. Each
+					$38~kg$ battery can store up to $10~kWh$ (actual usable capacity is
+					$9.6~kWh$) with a maximum output power of $10~kW$. As this study is
+					only a first order approximation, we will make the following
+					unrealistic assumptions.
+				</p>
+				<ol>
+					<li>$10~kWh$ store may be used (i.e. 100% power efficiency).</li>
+					<li>Maximum output power of $10~kW$ regardless of battery
+						charge levels.</li>
+				</ol>
+				<p>Due to the power constraints, and by using an engine
+					efficency close to that of the most recent press release, we will
+					be using the following matching parameters for the engine.</p>
+				<ul>
+					<li>$\eta=0.7358$</li>
+					<li>$I_\text{sp}=5~000~s$</li>
+					<li>$P=100~kW$</li>
+					<li>$T=3~N$</li>
+					<li>Maximum operation duration $dt=6~h=21~600~s$</li>
+				</ul>
+				<p>Based on these parameters, we estimate the mass of the
+					batteries to be the following. $$m_\text{pwr}=2~310~kg$$</p>
+
+				<p>With a mass of $620~kg$ our initial estimate for the
+					batteries and engine alone is $$m_\text{partial}=2~930~kg$$ Adding
+					in a 25% margin for the bus of this spacecraft, we calculate the
+					dry mass for the engine part of the spacecraft to be the following.
+					$$m_{sc}=3~662.5~kg$$</p>
+
+				<p>
+					Let's say the vehicle is transporting two spacecraft similar to
+					MAVEN <a href="references.html"><span class="badge">SC-3</span></a>,
+					which has a dry mass of $900~kg$.$$m_{dry}\simeq 5~500~kg$$
+				</p>
+
+				<p>Finally, as a ball park number, let's assume the spacecraft
+					has $500~kg$ of fuel onboard. This leads to the following wet
+					mass.$$m_{wet}\simeq 6~000~kg$$</p>
+
+				<p>It is important to note that we are considering the dry mass
+					of the vehicle only. Our simulations will show the amount of fuel
+					needed based on the different parameters, which will help us
+					determining which transfers, if any, can be considered reasonable.</p>
+
+				<h3>Hohmann transfer as comparison</h3>
+				<p>Let's build an Hohmann transfer on the shortest distance
+					possible between the Earth and Mars. We will use this as a baseline
+					to compare the needed $\Delta v$ and time of flight $\Delta t$.</p>
+				<ul>
+					<li>Semi major axis of transfer orbit:
+						$$a_{\text{trans}}=189~355~000~km$$</li>
+					<li>Departure heliocentric velocity: $$v_{d}=32.7550~km\cdot
+						s^{-1}$$</li>
+					<li>Departure heliocentric velocity of Earth:
+						$$v_{\oplus}=29.7805~km\cdot s^{-1}$$</li>
+					<li>Arrival heliocentric velocity: $$v_{a}=21.3972~km\cdot
+						s^{-1}$$</li>
+					<li>Arrival heliocentric velocity of Mars:
+						$$v_{M}=24.0698~km\cdot s^{-1}$$</li>
+					<li>Velocity changes: $\Delta v_1=2.9745~km\cdot s^{-1}$
+						$\Delta v_2=2.6725~km\cdot s^{-1}$</li>
+					<li>Total velocity change: $$\Delta v=5.6471~km\cdot s^{-1}$$</li>
+					<li>Transfer time: $$\Delta t=260.0694~days$$</li>
+				</ul>
+
+				<h3>Lambert's problem</h3>
+				<p>We'll use Lambert's problem to determine the $\Delta v$
+					requirements to transfer from Earth to Mars in a given time, and
+					more specifically to arrive at Mars faster than an Hohmann
+					transfer. Lambert's problem requires the departure and arrival
+					positions, the duration of the transfer and the number of complete
+					orbits. We want to outrun Hohmann, so we will always set the number
+					of complete orbits to zero. We will build a variety of departing
+					and arriving points based on a synodic period of 2.135 years.</p>
+
+				<p>One of the problems highlighted in the introduction is the
+					high constraint on launch windows, typically aimed at launching
+					when Mars and Earth are the closest. In order to determine the best
+					launch opportunities, I solved the Lambert Problem iteratively for
+					every day throughout a synodic period to find the lowest $\Delta v$
+					requirements in order to attempt six launches per synodic period,
+					but large launch windows did not find any solution. The position
+					and velocity vectors of Earth and Mars were defined as follows.
+					$$\vec{R}_{\oplus}=\left[\begin{array}{c} 149~640~000\cos
+					\lambda_\oplus\\ 149~640~000\sin \lambda_\oplus\\ 0
+					\end{array}\right]~km$$ $$\vec{V}_{\oplus}=\left[\begin{array}{c}
+					29.7805\cos \lambda_\oplus\\ 29.7805\sin \lambda_\oplus\\ 0
+					\end{array}\right]~km\cdot s^{-1}$$
+					$$\vec{R}_{M}=\left[\begin{array}{c} 229~070~000\cos \lambda_M\\
+					229~070~000\sin \lambda_M\\ 0 \end{array}\right]~km$$
+					$$\vec{V}_{M}=\left[\begin{array}{c} 24.0698\cos \lambda_M\\
+					24.0698\sin \lambda_M\\ 0 \end{array}\right]~km\cdot s^{-1}$$</p>
+
+				<div class="panel panel-default">
+					<!-- Default panel contents -->
+					<div class="panel-heading">Lambert's problem solutions</div>
+					<div class="panel-body">
+						<p>
+							Here are the solutions for one launch every six months for 2.135
+							years with a transfer time of six months or less. These were
+							computed using
+							<code>opt_dv_lambert.m</code>
+							and
+							<code>lambert.m</code>
+							, and displayed using
+							<code>circ_plot.m</code>
+							(cf. <i>References</i>).
+						</p>
+					</div>
+					<table class="table table-hover">
+						<thead>
+							<tr>
+								<th>No.</th>
+								<th>$\Delta v~(km\cdot s^{-1})$</th>
+								<th>$\vec{R}_1~(10^8~km)$</th>
+								<th>$\vec{R}_2~(10^8km)$</th>
+								<th>$\vec{V}_1~(km\cdot s^{-1})$</th>
+								<th>$\vec{V}_2~(km\cdot s^{-1})$</th>
+								<th>Figure</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>3</td>
+								<td>$5.1361$</td>
+								<td>$\left[\begin{array}{c} 0.9516\\ -1.1549\\ 0
+									\end{array}\right]$</td>
+								<td>$\left[\begin{array}{c} -1.8734\\ 1.3183\\ 0
+									\end{array}\right]$</td>
+								<td>$\left[\begin{array}{c} -29.3216\\ -16.7630\\ 0
+									\end{array}\right]$</td>
+								<td>$\left[\begin{array}{c} 6.5715\\ 21.9663\\ 0
+									\end{array}\right]$</td>
+								<td><button type="button" class="btn btn-primary btn-sm"
+										data-toggle="modal" data-target="#sol3">
+										<i class="fa fa-picture-o"></i>
+									</button></td>
+							</tr>
+							<tr>
+								<td>4</td>
+								<td>$5.8885$</td>
+								<td>$\left[\begin{array}{c} -0.2952\\ 1.4675\\ 0
+									\end{array}\right]$</td>
+								<td>$\left[\begin{array}{c} -1.8552\\ -1.3437\\ 0
+									\end{array}\right]$</td>
+								<td>$\left[\begin{array}{c} -32.3122\\ 0.0039\\ 0
+									\end{array}\right]$</td>
+								<td>$\left[\begin{array}{c} 11.5531\\ -17.1917\\ 0
+									\end{array}\right]$</td>
+								<td><button type="button" class="btn btn-primary btn-sm"
+										data-toggle="modal" data-target="#sol4">
+										<i class="fa fa-picture-o"></i>
+									</button></td>
+							</tr>
+							<tr>
+								<td>2</td>
+								<td>$6.9334$</td>
+								<td>$\left[\begin{array}{c} -1.3534\\ 0.6385\\ 0
+									\end{array}\right]$</td>
+								<td>$\left[\begin{array}{c} -0.6914\\ 2.1839\\ 0
+									\end{array}\right]$</td>
+								<td>$\left[\begin{array}{c} -2.2048\\ 30.5643\\ 0
+									\end{array}\right]$</td>
+								<td>$\left[\begin{array}{c} 15.2888\\ -9.4994\\ 0
+									\end{array}\right]$</td>
+								<td><button type="button" class="btn btn-primary btn-sm"
+										data-toggle="modal" data-target="#sol2">
+										<i class="fa fa-picture-o"></i>
+									</button></td>
+							</tr>
+							<tr>
+								<td>5</td>
+								<td>$12.1610$</td>
+								<td>$\left[\begin{array}{c} -0.3865\\ -1.4456\\ 0
+									\end{array}\right]$</td>
+								<td>$\left[\begin{array}{c} 0.7036\\ -2.1800\\ 0
+									\end{array}\right]$</td>
+								<td>$\left[\begin{array}{c} 5.4393\\ -27.6921\\ 0
+									\end{array}\right]$</td>
+								<td>$\left[\begin{array}{c} 4.4097\\ 12.7257\\ 0
+									\end{array}\right]$</td>
+								<td><button type="button" class="btn btn-primary btn-sm"
+										data-toggle="modal" data-target="#sol5">
+										<i class="fa fa-picture-o"></i>
+									</button></td>
+							</tr>
+						</tbody>
+					</table>
+					<!-- Figure modals. -->
+					<div class="modal fade" id="sol3" tabindex="-1" role="dialog"
+						aria-labelledby="myModalLabel">
+						<div class="modal-dialog" role="document">
+							<div class="modal-content">
+								<div class="modal-body">
+									<figure class="figure">
+										<img src="refs/lambert-sol3.png"
+											class="figure-img img-fluid img-rounded"
+											alt="Earth-Mars circular orbit">
+										<figcaption class="figure-caption text-xs-right">
+											Earth-Mars positions about the Sun for this solution</figcaption>
+									</figure>
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-default"
+										data-dismiss="modal">Close</button>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="modal fade" id="sol4" tabindex="-1" role="dialog"
+						aria-labelledby="myModalLabel">
+						<div class="modal-dialog" role="document">
+							<div class="modal-content">
+								<div class="modal-body">
+									<figure class="figure">
+										<img src="refs/lambert-sol4.png"
+											class="figure-img img-fluid img-rounded"
+											alt="Earth-Mars circular orbit">
+										<figcaption class="figure-caption text-xs-right">
+											Earth-Mars positions about the Sun for this solution</figcaption>
+									</figure>
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-default"
+										data-dismiss="modal">Close</button>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="modal fade" id="sol2" tabindex="-1" role="dialog"
+						aria-labelledby="myModalLabel">
+						<div class="modal-dialog" role="document">
+							<div class="modal-content">
+								<div class="modal-body">
+									<figure class="figure">
+										<img src="refs/lambert-sol2.png"
+											class="figure-img img-fluid img-rounded"
+											alt="Earth-Mars circular orbit">
+										<figcaption class="figure-caption text-xs-right">
+											Earth-Mars positions about the Sun for this solution</figcaption>
+									</figure>
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-default"
+										data-dismiss="modal">Close</button>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="modal fade" id="sol5" tabindex="-1" role="dialog"
+						aria-labelledby="myModalLabel">
+						<div class="modal-dialog" role="document">
+							<div class="modal-content">
+								<div class="modal-body">
+									<figure class="figure">
+										<img src="refs/lambert-sol5.png"
+											class="figure-img img-fluid img-rounded"
+											alt="Earth-Mars circular orbit">
+										<figcaption class="figure-caption text-xs-right">
+											Earth-Mars positions about the Sun for this solution</figcaption>
+									</figure>
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-default"
+										data-dismiss="modal">Close</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<h3>Propagate spacecraft to reach desired heliocentric velocity</h3>
+				<p>
+					Using Matlab's ODE45, we will propagate the spacecraft's position
+					and velocity three times. The first time while simulating a thrust
+					of the VX-200 engine given the mass estimate of the spacecraft as
+					compute above. Then once the spacecraft is <i>crusing</i> towards
+					Mars without burning any fuel. Finally, we will iteratively
+					determine a proper distance from the destination at which we should
+					start the slowing down burn.
+				</p>
+				<p>The objectives of this propagation are the following.</p>
+				<ol>
+					<li>Identify burn time needed to reach each of the $\Delta
+						v$s. This may be used to reassess sizing of batteries, and
+						determine charging rate.</li>
+					<li>Identify the fuel mass requirements.</li>
+					<li>Identify distance at which to start slowing down burn.</li>
+				</ol>
+				<p>The following simplifications are made for the overall
+					propagation</p>
+				<ol>
+					<li>Reaching the required heliocentric velocity for the
+						transfer at anytime throughout the transfer is an acceptable
+						trajectory to reach Mars.</li>
+					<li>At Earth departure, the vehicle has an infinitesimal
+						hyperbolic velocity: the spacecraft is assumed to be in a
+						heliocentric orbit at the same velocity as Earth.</li>
+					<li>At Mars arrival, it is sufficient to match the desired
+						arrival velocity anywhere within the sphere of influence of Mars:
+						$R_\text{M-SOI}=577~230~km$.</li>
+					<li>The shooting angle of the burn was estimated to be
+						perpendicular to the flight path at all times. We are only looking
+						at the magnitude of the velocity vector.</li>
+				</ol>
+				<h2 id="method-analysis">Analysis of method</h2>
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<p>
+							A set of VASIMR engine thrusts were simulated using
+							<code>vasimr.m</code>
+							and
+							<code>vasimr_*.m</code>
+							functions (cf. <i>References</i>). This table regroups the
+							results for burn and cruise durations, fuel mass used and final
+							distance to the Martian orbit.
+						</p>
+						<p>Note that for solution number two, I was unable to have the
+							propagator converge correctly with decent stopping values.
+							Similarly, solution five was not able to converge when performing
+							the slowing down burn.</p>
+					</div>
+					<table class="table table-hover">
+						<thead>
+							<tr>
+								<th rowspan="2" class="text-center">No.</th>
+								<th colspan="2" class="text-center">Burn 1</th>
+								<th rowspan="2" class="text-center">Cruise duration (days)</th>
+								<th colspan="2" class="text-center">Burn 2</th>
+								<th rowspan="2" class="text-center">Final distance to Mars
+									(km)</th>
+							</tr>
+							<tr>
+								<th>Duration (s)</th>
+								<th>Fuel (kg)</th>
+								<th>Duration (s)</th>
+								<th>Fuel (kg)</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>3</td>
+								<td>$43915.798$</td>
+								<td>$2.6860$</td>
+								<td>$42.118$</td>
+								<td>$33143.123$</td>
+								<td>$2.0270$</td>
+								<td>$311900.117$</td>
+							</tr>
+							<tr>
+								<td>4</td>
+								<td>$96145.819$</td>
+								<td>$5.8800$</td>
+								<td>$29.249$</td>
+								<td>$21044.107$</td>
+								<td>$1.2880$</td>
+								<td>$254593.135$</td>
+							</tr>
+							<tr>
+								<td>2</td>
+								<td><i>N/A</i></td>
+								<td><i>N/A</i></td>
+								<td><i>N/A</i></td>
+								<td><i>N/A</i></td>
+								<td><i>N/A</i></td>
+								<td><i>N/A</i></td>
+							</tr>
+							<tr>
+								<td>5</td>
+								<td>$537.174$</td>
+								<td>$0.0330$</td>
+								<td>$42.368$</td>
+								<td><i>N/A</i></td>
+								<td><i>N/A</i></td>
+								<td><i>N/A</i></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<p>
+					We note that fuel consumption is very low ($61.1~mg\cdot s^{-1}$),
+					but that agrees with <span class="badge ref">AD-2</span> which
+					states consumption for argon is between 50 and 100 milligrams per
+					second. However, this also implies that we could easily speed up
+					the Mars transfer by performing longer burns; Or we could reduce
+					the battery mass. It is also important to note that we did not
+					consider here the fuel needed to attain a hyperbolic orbit with
+					respects to Earth. This could be computed using the
+					<code>vasimr_out_event.m</code>
+					ODE45 propagator event.
+				</p>
+				<p>Trajectories from our Lambert problem uses a surprisingly low
+					$\Delta v$. However, to some extend, they are understandable given
+					our assumption of already being in a heliocentric orbit cruising at
+					the same orbital velocity as Earth. We should also note that as
+					presented on the Ad Astra website, planetary orbit injections need
+					to be very tangential to the planet itself. This may explain why
+					solutions 2 and 5 did not properly converge.</p>
+				<p>Further and more in depth analysis must be based on precise
+					orbital models of the planets' motion (possibly using pre-computed
+					values such as SPICE). One of the most important issues which was
+					not addressed in this study is the shooting angle of the thruster.</p>
+				<p></p>
+			</div>
+			<div class="col-md-3">
+				<ul class="nav nav-pills nav-stacked sidebar">
+
+					<li role="presentation"><a href="#importance">Mission
+							importance</a></li>
+					<li role="presentation"><a href="#astrodyn">Astrodynamics
+							importance</a></li>
+					<li role="presentation"><a href="#method">Development of
+							solution method</a></li>
+					<li role="presentation"><a href="#method-analysis">Analysis
+							of method</a></li>
+					<li><a href="#" class="top-link"><i
+							class="fa fa-arrow-circle-up"></i> Top of page</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<footer class="footer">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6 text-left">
+					<p class="text-muted">
+						<img alt="CU logo" src="cu-logo.png" height="25" /> University of
+						Colorado Boulder - ASEN 5050 Research Project
+					</p>
+				</div>
+				<div class="col-md-6 text-right">
+					<p class="text-muted">
+						Christopher Rabotin. <a
+							href="http://linkedin.com/in/christopherrabotin" target="_blank"><i
+							class="fa fa-linkedin"></i></a> <a
+							href="http://github.com/ChristopherRabotin" target="_blank"><i
+							class="fa fa-github"></i></a>
+					</p>
+				</div>
+			</div>
+		</div>
+	</footer>
+	<!-- Bootstramp JS -->
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
+		integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
+		crossorigin="anonymous"></script>
+</body>
+</html>
